@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-const kPrimraryColor = Color(0xffFFC700);
+const kPrimraryColor = Color(0xff2B475E);
 const MaterialColor kPrimarySwatch = MaterialColor(
-  0xffFFC700,
+  0xff2B475E,
   <int, Color>{
-    50: Color(0xFFFFF9C4),
+    50:  Color(0xFFFFF9C4),
     100: Color(0xFFFFF59D),
     200: Color(0xFFFFF176),
     300: Color(0xFFFFEE58),
