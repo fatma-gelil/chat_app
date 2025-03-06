@@ -1,3 +1,4 @@
+import 'package:chat_ui_setup/screens/chat_screen.dart';
 import 'package:chat_ui_setup/screens/login_screen.dart';
 import 'package:chat_ui_setup/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,8 @@ class Chatty extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
-        SignupScreen.id: (context) => SignupScreen()
+        SignupScreen.id: (context) => SignupScreen(),
+        ChatScreen.id :(context)=>ChatScreen()
       },
       initialRoute: 'LoginScreen',
     );

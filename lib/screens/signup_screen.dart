@@ -1,4 +1,5 @@
 import 'package:chat_ui_setup/constants.dart';
+import 'package:chat_ui_setup/screens/chat_screen.dart';
 import 'package:chat_ui_setup/validator.dart';
 import 'package:chat_ui_setup/widgets/custom_button.dart';
 import 'package:chat_ui_setup/widgets/custom_text_field.dart';
@@ -89,6 +90,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         try {
                           await signupAuthentication();
                           showSnackbar(context, 'Signed up successfully');
+                          Navigator.pushNamed(context, ChatScreen.id);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             showSnackbar(
@@ -143,8 +145,7 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> signupAuthentication() async {
-    UserCredential user = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
-            email: email.text, password: password.text);
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email.text, password: password.text);
   }
 }

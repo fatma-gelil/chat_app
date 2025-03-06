@@ -1,4 +1,5 @@
 import 'package:chat_ui_setup/constants.dart';
+import 'package:chat_ui_setup/screens/chat_screen.dart';
 import 'package:chat_ui_setup/validator.dart';
 import 'package:chat_ui_setup/widgets/custom_button.dart';
 import 'package:chat_ui_setup/widgets/custom_text_field.dart';
@@ -84,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     try {
                       loginAuthentication();
                       showSnackbar(context, 'Logged in successfully');
+                      Navigator.pushNamed(context, ChatScreen.id);
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
                         showSnackbar(context, 'No user found for that email.');
@@ -92,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             context, 'Wrong password provided for that user.');
                       }
                     } catch (e) {
-                      print(e);
+                     // print(e);
                     }
                   } else {
                     // CircularProgressIndicator();
@@ -142,8 +144,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void loginAuthentication() {
-    FirebaseAuth.instance
+  Future<void> loginAuthentication() async {
+    await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email.text, password: password.text);
   }
 }
