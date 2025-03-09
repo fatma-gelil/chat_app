@@ -74,6 +74,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     return MyValidators.passwordValidator(value);
                   },
                   text: 'password',
+                  obsecureText: true,
                   controller: password,
                 ),
               ),
@@ -90,7 +91,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         try {
                           await signupAuthentication();
                           showSnackbar(context, 'Signed up successfully');
-                          Navigator.pushNamed(context, ChatScreen.id);
+                          Navigator.pushNamed(context, ChatScreen.id,arguments: email);
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'weak-password') {
                             showSnackbar(

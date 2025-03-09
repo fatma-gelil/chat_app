@@ -2,19 +2,23 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField(
+   CustomTextFormField(
       {super.key,
       required this.text,
+      this.obsecureText=false,
       this.onchanged,
       this.controller,
       required this.validator});
   final String? text;
+  bool? obsecureText;
   final Function(String)? onchanged;
   final TextEditingController? controller;
   final String? Function(String?) validator;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obsecureText!,
       validator: validator,
       onChanged: onchanged,
       controller: controller,

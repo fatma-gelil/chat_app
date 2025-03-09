@@ -73,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   validator: (value) {
                     return MyValidators.passwordValidator(value);
                   },
+                  obsecureText: true,
                   text: 'password',
                   controller: password,
                 ),
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     try {
                       loginAuthentication();
                       showSnackbar(context, 'Logged in successfully');
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Navigator.pushNamed(context, ChatScreen.id,arguments: email);
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
                         showSnackbar(context, 'No user found for that email.');
